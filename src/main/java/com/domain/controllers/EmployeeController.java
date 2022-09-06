@@ -7,15 +7,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.domain.models.entities.Employee;
 import com.domain.services.EmployeeService;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/v1/employees")
 public class EmployeeController {
@@ -38,8 +38,8 @@ public class EmployeeController {
     return employeeService.findOne(id);
   }
 
-  @PutMapping
-  public Employee update(@RequestBody Employee employee){
+  @RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
+  public Employee update(@ModelAttribute @RequestBody Employee employee){
     return employeeService.save(employee);
   }
 
