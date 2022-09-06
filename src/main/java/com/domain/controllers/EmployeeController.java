@@ -24,7 +24,7 @@ public class EmployeeController {
   private EmployeeService employeeService;
 
   @PostMapping
-  public Employee create(@ModelAttribute @RequestBody Employee employee){
+  public Employee create(@ModelAttribute("employee") @RequestBody Employee employee){
     return employeeService.save(employee);
   }
 
