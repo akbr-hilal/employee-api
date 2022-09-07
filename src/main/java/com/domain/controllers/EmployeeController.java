@@ -19,33 +19,33 @@ import com.domain.services.EmployeeService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
-@RequestMapping("/api/v1/employees")
+@RequestMapping("/api/v1")
 public class EmployeeController {
   
   @Autowired
   private EmployeeService employeeService;
 
-  @RequestMapping(value = "*", method = RequestMethod.POST)
+  @RequestMapping(value = "/employees", method = RequestMethod.POST)
   public Employee create(@ModelAttribute @RequestBody Employee employee){
     return employeeService.save(employee);
   }
 
-  @GetMapping
+  @GetMapping("/employees")
   public Iterable<Employee> findAll(){
     return employeeService.findAll();
   }
 
-  @GetMapping("/{id}")
+  @GetMapping("/employees/{id}")
   public Employee findOne(@PathVariable("id") Long id){
     return employeeService.findOne(id);
   }
 
-  @RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
+  @RequestMapping(value = "/employees/{id}", method = RequestMethod.PATCH)
   public Employee update(@ModelAttribute @RequestBody Employee employee){
     return employeeService.save(employee);
   }
 
-  @DeleteMapping("/{id}")
+  @DeleteMapping("/employees/{id}")
   public void removeOne(@PathVariable("id") Long id){
     employeeService.removeOne(id);
   }
