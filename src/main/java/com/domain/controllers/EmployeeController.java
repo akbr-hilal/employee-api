@@ -26,7 +26,7 @@ public class EmployeeController {
   private EmployeeService employeeService;
 
   @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-  public Employee create(@ModelAttribute @RequestBody Employee employee){
+  public Employee create(@RequestBody Employee employee){
     return employeeService.save(employee);
   }
 
