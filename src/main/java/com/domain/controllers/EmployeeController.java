@@ -1,8 +1,8 @@
 package com.domain.controllers;
 
 
-import org.apache.tomcat.util.http.parser.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +25,7 @@ public class EmployeeController {
   @Autowired
   private EmployeeService employeeService;
 
-  @RequestMapping(method = RequestMethod.POST, headers = "Accept=application/json")
+  @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
   public Employee create(@ModelAttribute @RequestBody Employee employee){
     return employeeService.save(employee);
   }
