@@ -25,8 +25,7 @@ public class EmployeeController {
   @Autowired
   private EmployeeService employeeService;
 
-  @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-  @CrossOrigin
+  @RequestMapping(value = "*", method = RequestMethod.POST)
   public Employee create(@ModelAttribute @RequestBody Employee employee){
     return employeeService.save(employee);
   }
